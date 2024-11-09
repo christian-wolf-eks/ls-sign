@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Test Project'
+project = 'fmi-ls-crypt'
 copyright = '2024, Christian Wolf and Foo Bar'
 author = 'Christian Wolf and Foo Bar'
 
