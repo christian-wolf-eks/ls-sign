@@ -27,4 +27,12 @@ The licenses text can be found in the LICENSE.txt file that accompanies this dis
    content/manifest.rst
    content/concepts.rst
    content/individual-files.rst
+   content/crypto.rst
+
+
+.. rubric:: References
+
+.. [IEC9594] ISO/IEC 9594-8, https://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/08/03/80325.html
+
+.. [Coreutils] GNU Coreutils, https://www.gnu.org/software/coreutils/
 

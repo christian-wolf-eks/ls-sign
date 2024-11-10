@@ -46,6 +46,3 @@ If there are files in the FMU which are not part of the hash list, the import mu
 
 Simirlarly, exceeding entries in the hash mapping list (entries for non-existing files in the FMU) must be reported to the user and there should be an option to abort the execution in this case as well.
 
-.. rubric:: References
-
-.. [Coreutils] GNU Coreutils, https://www.gnu.org/software/coreutils/

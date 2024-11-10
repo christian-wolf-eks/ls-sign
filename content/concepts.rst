@@ -27,9 +27,3 @@ Optionally, the FMU provider can offer an HTTP endpoint to fetch a certificate r
 Hashing of individual files
 ===========================
 
-
-
-
-.. rubric:: References
-
-.. [IEC9594] ISO/IEC 9594-8, https://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/08/03/80325.html
