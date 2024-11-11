@@ -39,7 +39,7 @@ jobs:
         with:
           path: venv
           key: venv-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
-          restore-key: |-
+          restore-keys: |-
             venv-${{ runner.os }}-
       - name: Create python venv
         run: python -m venv venv
@@ -55,7 +55,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3.0.1
         with:
           path: _build/html
-          days: 7
+          retention-days: 7
 
   # Deployment job
   deploy:
