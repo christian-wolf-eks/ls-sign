@@ -12,6 +12,10 @@ BUILDDIR      = _build
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
+	@echo "Additional Makefile destination points:"
+	@echo "  server - Run an interactive server for debugging"
+	@echo "  dist   - Build the complete documentation as needed for deployment"
+
 .PHONY: help Makefile server dist
 
 # Catch-all target: route all unknown targets to Sphinx using the new
