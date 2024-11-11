@@ -29,7 +29,7 @@ Conventions used in this document:
 
 
 Rough outline of the approach
-============================
+=============================
 
 .. note::
     

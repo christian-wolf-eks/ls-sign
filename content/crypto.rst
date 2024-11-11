@@ -1,15 +1,33 @@
+.. _signatures:
+
 Cryptography and trust anchor
 #############################
 
 .. note:: Should we allow only cert based/PKI approach or also web of trust? Does it even make a difference here?
 
-This layered standard allows to use multiple signatures at the same time.
-If one of the signatures validate, the FMU must be considered valid.
+This layered standard allows using multiple signatures simultaneously.
+If one of the signatures can be verified, the FMU should be considered valid.
 
+.. warning:: One or all for validity? SHOULD / MUST?
 
+The individual signatures must be stored in the ``signatures`` tag in the ``crypto.xml`` file.
+The ordering of the signatures is irrelevant.
+The type of the signature is defined by the XML tag of the signature.
 
-Public Key Infrastructure (PKI)
-===============================
+.. note::
+    Example of a ``signatures`` XML tag with three x509-based signatures and one PGP-based signature
+
+    .. code-block:: XML
+
+        <signatures>
+            <x509-signature>...</x509-signature>
+            <x509-signature>...</x509-signature>
+            <pgp-signature>...</pgp-signature>
+            <x509-signature>...</x509-signature>
+        </signatures>
+
+Public Key Infrastructure (PKI) using x509 certificates
+=======================================================
 
 .. note:: 
     The [IEC9594]_ is the standardized way to handle certificates.
@@ -45,19 +63,46 @@ Public Key Infrastructure (PKI)
       This way, the organization can issue certificates for their own usage.
       For example, a component supplier could create certificates for all generated FMUs and use them to sign the FMUs individually.
 
-Storage in the cryptogrphic chain file
---------------------------------------
+A signature using a x509 certificate must be indicated by an XML tag ``x509-signature``.
+The tag must have the following children:
+
+- A tag ``x509-chain`` that represents the chain of certificates to sign/verify the FMU
+- A tag ``signature`` that holds the actual signature
+
+.. note::
+    Example
+
+    .. code-block:: XML
+
+        <x509-signature>
+            <x509-chain>
+                <chain-link>
+                    AAABBBBDDDCCCC
+                </chain-link>
+                <chain-link>
+                    0000111122223333
+                </chain-link>
+            </x509-chain>
+            <signature>
+                44556677
+            </signature>
+        </x509-signature>
+
+Storage of the cryptographic chain
+----------------------------------
 
 All certificates must be stored in PEM format.
-The header and footer lines must be dropped.
+The header and footer lines (``===== BEGIN CERTIFICATE ======`` and ``====== END CERTIFICATE ======``) must be dropped.
 
-A single chain of certificates must be provided in the :ref:`certificate chain file <crypto-file>` as an XML tag ``x509-chain``.
-
-Each certificate in the certificate chain must be enclosed in a ``chain-link`` XML tag.
-In the ``chain-link`` tag, only the content of the certificate must be provided.
+A single chain of certificates must be provided within the XML tag ``x509-chain``.
+Each certificate in the chain must be enclosed in a ``chain-link`` XML tag.
+In the ``chain-link`` tag, only the content of the certificate must be provided without the header/footer lines.
+The certificate content can be broken into multiple lines and whitespace can be added for indentation.
 
 The ``chain-link`` entries must be provided in the order of the certificate chain:
-each XML tag must be preceded by the corresponding parent certificate tag.
+each certificate in the chain signs the certificate in the next ``chain-link`` tag.
+Only the last certificate in the chain is the leaf certificate and must not sign any other certificate.
+
 The root certificate as very first certificate in the chain should not be present in the XML file.
 
 .. warning::
@@ -88,10 +133,28 @@ The root certificate as very first certificate in the chain should not be presen
 Signature of the hashes
 -----------------------
 
+The tag ``signature`` must contain the base64-encoded [RFC4648]_ signature of the total hash.
+
+The leaf certificate's private key must not be part of the distributed FMU.
+It must be used while building the FMU according to this layered standard to sign the total hash as defined in :ref:`total-hash`.
+
+.. note::
+    The signature of the total hash can be checked this way to be genuine.
+    As the total hash was calculated from the individual hashes, any change in any file will with very high probability lead to a change in the individual hash string and thus in the total hash.
+    Using the cryptographic signature, the user can be rather sure that the files are not changed intentionally or non-intentionally compared to the ones when signed.
+
+Tasks of the importer
+---------------------
 
 .. warning:: How to handle shortened certificate chains?
 
     If the certificate chain contains more certificates (another root CA), should this be accepted or rejected?
+
+.. warning:: Open points
+
+    - Trust anchor? Bisher nur Vertrauen in *ein Zertifikat*, wer kann das erstellen? Darf er das?
+    - Certification policy und name constraints?
+    - Welchen Firmen/CAs traue ich?
 
 Web of Trust (WoT)
 ==================

@@ -28,6 +28,7 @@ The licenses text can be found in the LICENSE.txt file that accompanies this dis
    content/concepts.rst
    content/individual-files.rst
    content/crypto.rst
+   content/appendix.rst
 
 
 .. rubric:: References
@@ -36,3 +37,4 @@ The licenses text can be found in the LICENSE.txt file that accompanies this dis
 
 .. [Coreutils] GNU Coreutils, https://www.gnu.org/software/coreutils/
 
+.. [RFC4648] RFC4648, The Base16, Base32, and Base64 Data Encodings, https://datatracker.ietf.org/doc/html/rfc4648
