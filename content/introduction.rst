@@ -28,7 +28,7 @@ Conventions used in this document:
 
 
 
-Rough ouline of the approach
+Rough outline of the approach
 ============================
 
 .. note::

@@ -11,8 +11,8 @@ Layered Standard Manifest
 
 The manifest file signals to the importer that the FMU supports this layered standard.
 The importer must try to verify the signature as described in this standard.
-If the FMU could not be verified, the importr should provide a error message to the user.
-Depending on the configuration, the importert must refuse to call or load any library code inside the FMU.
+If the FMU could not be verified, the importer should provide a error message to the user.
+Depending on the configuration, the importer must refuse to call or load any library code inside the FMU.
 
 As with any layered standard, a layered standard manifest file ``fmi-ls-manifest.xml`` is required.
 
@@ -55,4 +55,4 @@ Cryptographic chain file
 
 The cryptographic chain file must be located in the layered standard path as described in :ref:`this section <storage-path>`.
 The file must be called ``crypto.xml``.
-The detailled structure is described in the next chapters.
+The detailed structure is described in the next chapters.

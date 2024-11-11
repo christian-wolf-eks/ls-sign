@@ -1,4 +1,5 @@
-Hasing of individual files
+
+Hashing of individual files
 ##########################
 
 All cryptographic hashes must be calculated using the SHA-256 or SHA-512 hash algorithms.
@@ -38,11 +39,11 @@ All hash lines must be collected in an XML tag ``<individual-hashes>...</individ
 Checking by the importer
 ========================
 
-The importer must check the hashes of each file foud in the extracted ZIP file.
-Any hash collossion must be reported to the user.
+The importer must check the hashes of each file found in the extracted ZIP file.
+Any hash collision must be reported to the user.
 Additionally, the user should be able to configure the importer such that the import process is aborted before any binary code from the FMU under test is executed.
 
 If there are files in the FMU which are not part of the hash list, the import must be aborted and an error message must be provided.
 
-Simirlarly, exceeding entries in the hash mapping list (entries for non-existing files in the FMU) must be reported to the user and there should be an option to abort the execution in this case as well.
+Similarly, exceeding entries in the hash mapping list (entries for non-existing files in the FMU) must be reported to the user and there should be an option to abort the execution in this case as well.
 
