@@ -1,6 +1,21 @@
 Introduction
 ############
 
+Versions and changelog
+======================
+
+All released versions should be mentioned here and the major updates summarized.
+
+.. list-table::
+    :header-rows: 1
+
+    -   - Version
+        - Release date
+        - Description
+    -   - 1.0.0
+        - not released yet
+        - Initial version
+
 Motivation
 ==========
 
@@ -34,3 +49,6 @@ Rough outline of the approach
 .. note::
     
     T.B.D.
+
+- No binary code execution
+- Hashing + signture

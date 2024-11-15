@@ -74,6 +74,8 @@ The hashing must use the SHA512 hash algorithm.
 
         <total-hash hash="92056bc0560f1eae68ae9e0195985072837e0001b2f18507a20e37e6af19dbbfa14a42656ae25338cfc0e135d950c54c018c052f0d366aeef6ba06ccc45c8f58" />
 
+.. _check-hashes:
+
 Checking by the importer
 ========================
 

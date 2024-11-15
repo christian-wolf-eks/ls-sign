@@ -150,6 +150,32 @@ Tasks of the importer
 
     If the certificate chain contains more certificates (another root CA), should this be accepted or rejected?
 
+In order to check the cryptographic signature, the importer must first load the certificate chain as provided in the ``x509-chain`` XML tag specified.
+Each certificate must be checked individually for validity, this is
+
+- Certificate has not expired (``notAfter``)
+- Certificate is already active (``notBefore``)
+- Certificate is signed by a trusted certificate (parent certificate in the chain or in registered root CAs)
+- Certificate subject must comply with parent's name constraints
+- For intermediate certificates: Certificate name constraints must not soften name constraints imposed by parent certificate
+- Additional checks may be added by the importer
+
+Once, trust in a leaf certificate has been established, the certificate's public key can be extracted.
+The importer must decode the base64-encoded signature and use the private key to verify the signature of the total hash.
+In order to report an FMU as signed and thus secure, the importer must also check all hashes as described in the section :ref:`Checking of the hashes <check-hashes>`.
+
+.. note::
+
+    This layered standard intentionally does not specify what certificates should be considered as root certificates or as trusted.
+    It is up to the importer to provide the user a way to specify which FMUs to trust and which are not to be trusted.
+
+    For example, the user might only trust these FMUs that have a certain name constraint fulfilled.
+    Then, there could be a whitelist of companies that are allowed to send in certificates.
+    Then, the certificates' ``O`` (organization) subject must match one of these whitelist entries to be accepted.
+
+    The actual policy of the certificate generation however should not be part of the layered standard for FMI.
+    Instead, the exact policy should be published and enforced as a parallel publication depending on the needs at hand.
+
 .. warning:: Open points
 
     - Trust anchor? Bisher nur Vertrauen in *ein Zertifikat*, wer kann das erstellen? Darf er das?
