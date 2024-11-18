@@ -15,7 +15,7 @@ The hash string must not directly be stored in the FMU.
 Instead, an encoded version is defined in :ref:`hashes-in-xml`.
 
 Each line represents a single file.
-The line starts with the hash value, two spaces and the relative file name in the ZIP file.
+The line starts with the hash value, two spaces and the relative file name within the zipped file.
 The line termination is a single newline char (``\n``).
 Comments, empty lines, or carriage return chars (``\r``) are not allowed in the string.
 The string must end in a new line char (``\n``) after the last entry.
@@ -33,7 +33,7 @@ The string must end in a new line char (``\n``) after the last entry.
     This file structure will break when newline chars are allows as part of a filename.
 
 Thus, the FMU exporter must make sure that no file in the FMU contains newline chars (``\n``) as part of their filenames.
-If such filenames exist, the user must be warned and the export should be aborted.
+If such filenames exist, the user must be warned and the export must be aborted.
 
 .. _hashes-in-xml:
 
@@ -65,7 +65,7 @@ The base64-encoded string as defined in :ref:`hashes-in-xml` must be hashed agai
 This value must be stored into the ``hash`` attribute of the ``total-hash`` XML tag.
 To avoid ambiguity, any newlines or whitespace has to be removed from the base64-encoded string prior to hashing.
 
-The hashing must use the SHA512 hash algorithm.
+The hashing must use the SHA-512 hash algorithm.
 
 .. note::
     Example of the hashed base64 encoded string
@@ -79,11 +79,11 @@ The hashing must use the SHA512 hash algorithm.
 Checking by the importer
 ========================
 
-The importer must check the hashes of each file found in the extracted ZIP file.
+The importer must check the hashes of each file found in the extracted zipped file.
 To do so, the importer must decode the base64-encoded string.
 For each file, the importer must guess the underlying hashing algorithm based on the length of the hashes in the raw string.
 
-Any hash collision must be reported to the user.
+Any discrepancies between hash stored in the ``individual-hashes`` and the hashes of the actual files in the FMU must be reported to the user.
 Additionally, the user should be able to configure the importer such that the import process is aborted before any binary code from the FMU under test is executed.
 
 If there are files in the FMU which are not part of the hash list, the import must be aborted and an error message must be provided.
@@ -94,3 +94,7 @@ Additionally, the importer must check the total hash against the base64-encoded 
 If the total hash as claimed in the FMU's ``hash`` attribute of the ``total-hash`` XML tag does not match the calculated hash from the ``individual-hashes`` tag, the importer must issue an error message to the user.
 The user should also be able to configure the importer to stop any further processing of the FMU before any binary code is executed.
 
+.. note::
+    The checking of the hashes is not cryptographically secure.
+    If an attacker intentionally tampers with an FMU, the hashes can be modified as well and will not report the changes.
+    To protect against this, a cryptographic signature is needed (see :ref:`signatures`).

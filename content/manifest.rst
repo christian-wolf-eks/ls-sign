@@ -3,8 +3,10 @@
 Layered Standard Storage
 ########################
 
-[*The layered standard requires a fixed folder in the* ``extra`` *directory in the FMU file.*]
-The *fmi-ls-crypt* layered standard must use the folder ``extra/de.eks-intec.fmi-ls-crypt``.
+.. note::
+    The layered standard requires a fixed folder in the* ``extra`` *directory in the FMU file.
+
+The *fmi-ls-crypt* layered standard must use the folder ``extra/de.eks-intec.fmi-ls-crypt`` within the zipped FMU bundle.
 
 Layered Standard Manifest
 =========================
@@ -15,6 +17,11 @@ If the FMU could not be verified, the importer should provide a error message to
 Depending on the configuration, the importer must refuse to call or load any library code inside the FMU.
 
 As with any layered standard, a layered standard manifest file ``fmi-ls-manifest.xml`` is required.
+
+.. note::
+    The existence of the file ``extra/de.eks-intec.fmi-ls-crypt/fmi-ls-crypt.xml`` indicates that the FMU adheres to the *fmi-ls-crypt* layered standard.
+    This is defined in the core standard.
+    Additionally, some basic information about the layered standard is given in this file.
 
 .. list-table::
     :header-rows: 1
@@ -48,11 +55,18 @@ As with any layered standard, a layered standard manifest file ``fmi-ls-manifest
             fmi-ls:fmi-ls-version="1.0.0"
             fmi-ls:fmi-ls-description="Layered standard for handling cryptographic trust in FMUs"/>
 
+The importer must check the version of the layered standard.
+If a newer major version [#major-part]_ in the manifest is found than the importer knows, the FMU must be rejected as signed invalidly.
+
 .. _crypto-file:
 
 Cryptographic chain file
 ========================
 
-The cryptographic chain file must be located in the layered standard path as described in :ref:`this section <storage-path>`.
-The file must be called ``crypto.xml``.
+This layered standard uses the so-called cryptographic chain file to store relevant data.
+The file must be called ``crypto.xml`` and located in the layered standard path [#lspath]_.
 The detailed structure is described in the next chapters.
+
+.. [#major-part] *The first digit of the semantic version string*
+
+.. [#lspath] *The path of this layered standard is* ``extra/de.eks-intec.fmi-ls-crypt``
