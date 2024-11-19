@@ -29,3 +29,4 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'venv']
 #html_theme = 'basic'
 html_theme = 'classic'
 html_static_path = ['_static']
+html_last_updated_fmt = "%b %d, %Y, %X"
