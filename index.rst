@@ -33,7 +33,9 @@ The licenses text can be found in the LICENSE.txt file that accompanies this dis
 
 .. rubric:: References
 
-.. [IEC9594] ISO/IEC 9594-8, https://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/08/03/80325.html
+.. [SemVer] Semantic versioning, https://semver.org/spec/v2.0.0.html
+
+.. [IEC9594] ISO/IEC 9594-8, Part 8: The Directory: Public-key and attribute certificate frameworks, Edition 9, 2020, https://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/08/03/80325.html
 
 .. [Coreutils] GNU Coreutils, https://www.gnu.org/software/coreutils/
 

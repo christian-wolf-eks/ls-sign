@@ -37,7 +37,7 @@ As with any layered standard, a layered standard manifest file ``fmi-ls-manifest
     -   - ``fmi-ls-version``
         - http://fmi-standard.org/fmi-ls-manifest
         - 1.0.0
-        - Version of the layered standard, using `semantic versioning < https://semver.org/spec/v2.0.0.html>`
+        - Version of the layered standard, using semantic versioning [SemVer]_
     -   - ``fmi-ls-description``
         - http://fmi-standard.org/fmi-ls-manifest
         - Layered standard for handling cryptogrphic trust in FMUs
