@@ -29,6 +29,6 @@ starlette==0.42.0
 tomli==2.2.1
 typing_extensions==4.12.2
 urllib3==2.2.3
-uvicorn==0.32.1
+uvicorn==0.34.0
 watchfiles==1.0.3
 websockets==14.1
