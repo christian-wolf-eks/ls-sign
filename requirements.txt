@@ -27,7 +27,7 @@ sphinxcontrib-qthelp==2.0.0
 sphinxcontrib-serializinghtml==2.0.0
 starlette==0.46.1
 tomli==2.2.1
-typing_extensions==4.12.2
+typing_extensions==4.13.1
 urllib3==2.3.0
 uvicorn==0.34.0
 watchfiles==1.0.4
