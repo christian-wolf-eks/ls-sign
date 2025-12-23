@@ -6,7 +6,7 @@ Layered Standard Storage
 .. note::
     The layered standard requires a fixed folder in the* ``extra`` *directory in the FMU file.
 
-The *fmi-ls-crypt* layered standard must use the folder ``extra/de.eks-intec.fmi-ls-crypt`` within the zipped FMU bundle.
+The *ls-sign* layered standard must use the folder ``extra/de.eks-intec.fmi.ls-sign`` within the zipped FMU bundle.
 
 Layered Standard Manifest
 =========================
@@ -19,7 +19,7 @@ Depending on the configuration, the importer must refuse to call or load any lib
 As with any layered standard, a layered standard manifest file ``fmi-ls-manifest.xml`` is required.
 
 .. note::
-    The existence of the file ``extra/de.eks-intec.fmi-ls-crypt/fmi-ls-crypt.xml`` indicates that the FMU adheres to the *fmi-ls-crypt* layered standard.
+    The existence of the file ``extra/de.eks-intec.fmi.ls-sign/fmi-ls-manifest.xml`` indicates that the FMU adheres to the *ls-sign* layered standard.
     This is defined in the core standard.
     Additionally, some basic information about the layered standard is given in this file.
 
@@ -32,7 +32,7 @@ As with any layered standard, a layered standard manifest file ``fmi-ls-manifest
         - Description
     -   - ``fmi-ls-name``
         - http://fmi-standard.org/fmi-ls-manifest
-        - de.eks-intec.fmi-ls-crypt
+        - de.eks-intec.fmi.ls-sign
         - Name of the layered standard in rev. domain notation
     -   - ``fmi-ls-version``
         - http://fmi-standard.org/fmi-ls-manifest
@@ -51,7 +51,7 @@ As with any layered standard, a layered standard manifest file ``fmi-ls-manifest
         <fmiLayeredStandardManifest
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xmlns:fmi-ls="http://fmi-standard.org/fmi-ls-manifest"
-            fmi-ls:fmi-ls-name="de.eks-intec.fmi-ls-crypt"
+            fmi-ls:fmi-ls-name="de.eks-intec.fmi.ls-sign"
             fmi-ls:fmi-ls-version="1.0.0"
             fmi-ls:fmi-ls-description="Layered standard for handling cryptographic trust in FMUs"/>
 
@@ -69,4 +69,4 @@ The detailed structure is described in the next chapters.
 
 .. [#major-part] *The first digit of the semantic version string*
 
-.. [#lspath] *The path of this layered standard is* ``extra/de.eks-intec.fmi-ls-crypt``
+.. [#lspath] *The path of this layered standard is* ``extra/de.eks-intec.fmi.ls-sign``

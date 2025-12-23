@@ -6,9 +6,9 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'fmi-ls-crypt'
-copyright = '2024, Christian Wolf and Foo Bar'
-author = 'Christian Wolf and Foo Bar'
+project = 'ls-sign'
+copyright = '2024-2026, Christian Wolf'
+author = 'Christian Wolf'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
