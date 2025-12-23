@@ -1,0 +1,20 @@
+name: Automerge dependabot
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+    steps:
+      - name: Github Action Merge Dependabot
+        uses: fastify/github-action-merge-dependabot@v3.11.2
+        with:
+          use-github-auto-merge: true
+          target: minor
+          target-indirect: major
