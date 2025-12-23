@@ -92,11 +92,12 @@ Storage of the cryptographic chain
 ----------------------------------
 
 All certificates must be stored in PEM format.
-The header and footer lines (``===== BEGIN CERTIFICATE ======`` and ``====== END CERTIFICATE ======``) must be dropped.
+The header and footer lines (``-----BEGIN CERTIFICATE-----`` and ``-----END CERTIFICATE-----``) must be dropped.
+Instead, the main content (which is already base64-encoded) must be used.
 
 A single chain of certificates must be provided within the XML tag ``x509-chain``.
 Each certificate in the chain must be enclosed in a ``chain-link`` XML tag.
-In the ``chain-link`` tag, only the content of the certificate must be provided without the header/footer lines.
+In the ``chain-link`` tag, only the content of the certificate must be provided as indicated above.
 The certificate content can be broken into multiple lines and whitespace can be added for indentation.
 
 The ``chain-link`` entries must be provided in the order of the certificate chain:
