@@ -13,7 +13,7 @@ jobs:
       contents: write
     steps:
       - name: Github Action Merge Dependabot
-        uses: fastify/github-action-merge-dependabot@v3.11.2
+        uses: fastify/github-action-merge-dependabot@v3.14.0
         with:
           use-github-auto-merge: true
           target: minor
